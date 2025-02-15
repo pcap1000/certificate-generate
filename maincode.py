@@ -12,7 +12,7 @@ import math
 from fpdf import FPDF
 
 # Register custom fonts for Coursera certificates
-pdfmetrics.registerFont(TTFont('RivalRegular', r'fonts/Rival Regular.ttf'))
+pdfmetrics.registerFont(TTFont('RivalRegular', r'fonts/rival-regular-1.otf'))
 pdfmetrics.registerFont(TTFont('DateFont', r'fonts/URW Grotesk Wide Light Oblique.ttf'))
 
 def generate_certificate(name, date, course, selected_company, course_provider="Coursera", instructor_name=None, logo_path=None):
