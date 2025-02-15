@@ -273,9 +273,9 @@ def generate_certificate(name, date, course, selected_company, course_provider="
         pdf.add_page()
 
         # Add custom fonts
-        pdf.add_font("Gunaydin", style="", fname=r"fonts/Altone Trial-Regular.ttf", uni=True)
-        pdf.add_font("TimesNewRomanBold", style="", fname=r"fonts/times-new-roman-bold.otf", uni=True)
-        pdf.add_font("Touche", style="", fname=r"fonts/Touche-Semibold-BF642a2ebf682d9.otf", uni=True)
+        pdf.add_font("Gunaydin", style="", fname=r"fonts\Altone Trial-Regular.ttf", uni=True)
+        pdf.add_font("TimesNewRomanBold", style="", fname=r"fonts\times-new-roman-bold.otf", uni=True)
+        pdf.add_font("Touche", style="", fname=r"fonts\Touche-Semibold-BF642a2ebf682d9.otf", uni=True)
 
         page_width = pdf.w
         page_height = pdf.h
