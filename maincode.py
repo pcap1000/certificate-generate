@@ -23,7 +23,7 @@ def generate_certificate(name, date, course, selected_company, course_provider="
 
         # Draw border image
         try:
-            border_path = r"static\Border.png"
+            border_path = r"static/Border.png"
             border_img = ImageReader(border_path)
             c.drawImage(border_img, 0, 0, width=height, height=width)
         except Exception as e:
@@ -46,7 +46,7 @@ def generate_certificate(name, date, course, selected_company, course_provider="
             second_line = "through Coursera."
             c.drawString(x, y - 12, second_line)
             try:
-                logo_path_left = r"static\purepng.com-ibm-logologobrand-logoiconslogos-251519939176ka7y8.png"
+                logo_path_left = r"static/purepng.com-ibm-logologobrand-logoiconslogos-251519939176ka7y8.png"
                 img_left = ImageReader(logo_path_left)
                 l_width = 2.0*inch
                 aspect_left = img_left.getSize()[1] / img_left.getSize()[0]
@@ -64,7 +64,7 @@ def generate_certificate(name, date, course, selected_company, course_provider="
             second_line = "offered through Coursera."
             c.drawString(x, y - 12, second_line)
             try:
-                logo_path_left = r"static\Johns_Hopkins_University_Logo-1536x258.png"
+                logo_path_left = r"static/Johns_Hopkins_University_Logo-1536x258.png"
                 img_left = ImageReader(logo_path_left)
                 l_width = 3.5*inch
                 aspect_left = img_left.getSize()[1] / img_left.getSize()[0]
@@ -82,7 +82,7 @@ def generate_certificate(name, date, course, selected_company, course_provider="
             second_line = "offered through Coursera."
             c.drawString(x, y - 12, second_line)
             try:
-                logo_path_left = r"static\duke_university.jpg"
+                logo_path_left = r"static/duke_university.jpg"
                 img_left = ImageReader(logo_path_left)
                 l_width = 2.0*inch
                 aspect_left = img_left.getSize()[1] / img_left.getSize()[0]
@@ -100,7 +100,7 @@ def generate_certificate(name, date, course, selected_company, course_provider="
             second_line = "offered through Coursera."
             c.drawString(x, y - 12, second_line)
             try:
-                logo_path_left = r"static\Wharton_Logo_Small.png"
+                logo_path_left = r"static/Wharton_Logo_Small.png"
                 img_left = ImageReader(logo_path_left)
                 l_width = 3.5*inch
                 aspect_left = img_left.getSize()[1] / img_left.getSize()[0]
@@ -118,7 +118,7 @@ def generate_certificate(name, date, course, selected_company, course_provider="
             second_line = "offered through Coursera."
             c.drawString(x, y - 12, second_line)
             try:
-                logo_path_left = r"static\yonsei.png"
+                logo_path_left = r"static/yonsei.png"
                 img_left = ImageReader(logo_path_left)
                 l_width = 3.5*inch
                 aspect_left = img_left.getSize()[1] / img_left.getSize()[0]
@@ -136,7 +136,7 @@ def generate_certificate(name, date, course, selected_company, course_provider="
             second_line = "offered through Coursera."
             c.drawString(x, y - 12, second_line)
             try:
-                logo_path_left = r"static\eidenburgh.png"
+                logo_path_left = r"static/eidenburgh.png"
                 img_left = ImageReader(logo_path_left)
                 l_width = 3.9*inch
                 aspect_left = img_left.getSize()[1] / img_left.getSize()[0]
@@ -154,7 +154,7 @@ def generate_certificate(name, date, course, selected_company, course_provider="
             second_line = "offered through Coursera."
             c.drawString(x, y - 12, second_line)
             try:
-                logo_path_left = r"static\university_of_london.jpeg"
+                logo_path_left = r"static/university_of_london.jpeg"
                 img_left = ImageReader(logo_path_left)
                 l_width = 1.5*inch
                 aspect_left = img_left.getSize()[1] / img_left.getSize()[0]
@@ -164,7 +164,7 @@ def generate_certificate(name, date, course, selected_company, course_provider="
                 print(f"Could not load left logo: {e}")
 
         try:
-            logo_path_right = r"static\Coursera-MZYLUZ38AX27-1536x1187.jpg"
+            logo_path_right = r"static/Coursera-MZYLUZ38AX27-1536x1187.jpg"
             img_right = ImageReader(logo_path_right)
             r_width = 2.5*inch
             aspect_right = img_right.getSize()[1] / img_right.getSize()[0]
@@ -175,7 +175,7 @@ def generate_certificate(name, date, course, selected_company, course_provider="
 
         # Signature
         try:
-            signature_path = r"static\sign.png"
+            signature_path = r"static/sign.png"
             img_signature = ImageReader(signature_path)
             sig_width = 2.0 * inch
             aspect_ratio = img_signature.getSize()[1] / img_signature.getSize()[0]
@@ -273,9 +273,9 @@ def generate_certificate(name, date, course, selected_company, course_provider="
         pdf.add_page()
 
         # Add custom fonts
-        pdf.add_font("Gunaydin", style="", fname=r"fonts\Altone Trial-Regular.ttf", uni=True)
-        pdf.add_font("TimesNewRomanBold", style="", fname=r"fonts\times-new-roman-bold.otf", uni=True)
-        pdf.add_font("Touche", style="", fname=r"fonts\Touche-Semibold-BF642a2ebf682d9.otf", uni=True)
+        pdf.add_font("Gunaydin", style="", fname=r"fonts/Altone Trial-Regular.ttf", uni=True)
+        pdf.add_font("TimesNewRomanBold", style="", fname=r"fonts/times-new-roman-bold.otf", uni=True)
+        pdf.add_font("Touche", style="", fname=r"fonts/Touche-Semibold-BF642a2ebf682d9.otf", uni=True)
 
         page_width = pdf.w
         page_height = pdf.h
