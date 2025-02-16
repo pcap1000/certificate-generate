@@ -276,9 +276,9 @@ def generate_certificate(name, date, course, selected_company, course_provider="
 
         # Add custom fonts
         try:
-            pdf.add_font("Gunaydin", style="", fname=r"fonts\Gunaydin-Regular.ttf")
-            pdf.add_font("TimesNewRomanBold", style="", fname=r"fonts\times-new-roman-bold.otf")
-            pdf.add_font("Touche", style="", fname=r"fonts\Touche-Semibold-BF642a2ebf682d9.otf")
+            pdf.add_font("Gunaydin", style="", fname=r"fonts/Gunaydin-Regular.ttf")
+            pdf.add_font("TimesNewRomanBold", style="", fname=r"fonts/times-new-roman-bold.otf")
+            pdf.add_font("Touche", style="", fname=r"fonts/Touche-Semibold-BF642a2ebf682d9.otf")
         except Exception as e:
             print(f"Error loading fonts: {e}")
             exit()
