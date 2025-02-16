@@ -18,9 +18,9 @@ from fpdf import FPDF
 pdfmetrics.registerFont(TTFont('RivalRegular', 'fonts/rival-regular-1.otf'))
 pdfmetrics.registerFont(TTFont('DateFont', 'fonts/URW Grotesk Wide Light Oblique.ttf'))
 # Register fonts for Udemy certificates
-pdfmetrics.registerFont(TTFont('Gunaydin', './fonts/Gunaydin-Regular.ttf'))
-pdfmetrics.registerFont(TTFont('TimesNewRomanBold', './fonts/times-new-roman-bold.otf'))
-pdfmetrics.registerFont(TTFont('Touche', './fonts/Touche-Semibold-BF642a2ebf682d9.ttf'))
+# pdfmetrics.registerFont(TTFont('Gunaydin', './fonts/Gunaydin-Regular.ttf'))
+# pdfmetrics.registerFont(TTFont('TimesNewRomanBold', './fonts/times-new-roman-bold.otf'))
+# pdfmetrics.registerFont(TTFont('Touche', './fonts/Touche-Semibold-BF642a2ebf682d9.ttf'))
 
 def generate_certificate(name, date, course, selected_company, course_provider="Coursera", instructor_name=None, logo_path=None):
     if course_provider == "Coursera":
