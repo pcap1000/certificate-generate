@@ -12,12 +12,8 @@ import math
 from fpdf import FPDF
 
 # Register custom fonts for Coursera certificates
-# pdfmetrics.registerFont(TTFont('RivalRegular', r'fonts/rival-regular-1.otf'))
-# pdfmetrics.registerFont(TTFont('DateFont', r'fonts/URW Grotesk Wide Light Oblique.ttf'))
-# Register fonts once at the module level
-pdfmetrics.registerFont(TTFont('RivalRegular', 'fonts/rival-regular-1.otf'))
-pdfmetrics.registerFont(TTFont('DateFont', 'fonts/URW Grotesk Wide Light Oblique.ttf'))
-
+pdfmetrics.registerFont(TTFont('RivalRegular', r'fonts/rival-regular-1.otf'))
+pdfmetrics.registerFont(TTFont('DateFont', r'fonts/URW Grotesk Wide Light Oblique.ttf'))
 
 def generate_certificate(name, date, course, selected_company, course_provider="Coursera", instructor_name=None, logo_path=None):
     if course_provider == "Coursera":
@@ -272,30 +268,33 @@ def generate_certificate(name, date, course, selected_company, course_provider="
         print(f"Certificate for {name} generated successfully!")
 
     elif course_provider == "Udemy":
-        # Generate Udemy certificate
         pdf = FPDF(orientation='L', unit='pt', format='A4')
+
+        # Collect user inputs
+        
+        logo_path = r"static\udemylogo-removebg-preview.png"
+
+        # Add custom fonts
+        try:
+            pdf.add_font("Gunaydin", style="", fname=r"fonts\Gunaydin-Regular.ttf")
+            pdf.add_font("TimesNewRomanBold", style="", fname=r"fonts\times-new-roman-bold.otf")
+            pdf.add_font("Touche", style="", fname=r"fonts\Touche-Semibold-BF642a2ebf682d9.otf")
+        except Exception as e:
+            print(f"Error loading fonts: {e}")
+            exit()
+
+        # Add a new page
         pdf.add_page()
-
-        pdfmetrics.registerFont(TTFont('Gunaydin', 'fonts/Gunaydin-Regular.ttf'))
-        pdfmetrics.registerFont(TTFont('TimesNewRomanBold', 'fonts/times-new-roman-bold.otf'))
-        pdfmetrics.registerFont(TTFont('Touche', 'fonts/Touche-Semibold-BF642a2ebf682d9.ttf'))
-                
-
-        # pdfmetrics.registerFont(TTFont('Gunaydin', r'fonts/Gunaydin-Regular.ttf'))
-        # pdfmetrics.registerFont(TTFont('TimesNewRomanBold', r'fonts/times-new-roman-bold.otf'))
-        # pdfmetrics.registerFont(TTFont('Touche', r'fonts/Touche-Semibold-BF642a2ebf682d9.ttf'))
-
-        # # Add custom fonts
-        # pdf.add_font("Gunaydin", style="", fname=r"fonts/Gunaydin-Regular.ttf", uni=True)
-        # pdf.add_font("TimesNewRomanBold", style="", fname=r"fonts/times-new-roman-bold.otf", uni=True)
-        # pdf.add_font("Touche", style="", fname=r"fonts/Touche-Semibold-BF642a2ebf682d9.ttf", uni=True)
-
         page_width = pdf.w
         page_height = pdf.h
         pdf.set_auto_page_break(auto=False)
 
         # Add Udemy Logo
-        pdf.image(logo_path, x=50, y=40, w=150)
+        try:
+            pdf.image(logo_path, x=50, y=40, w=150)
+        except Exception as e:
+            print(f"Error adding logo: {e}")
+            exit()
 
         # Certificate metadata (top-right)
         pdf.set_font("Gunaydin", size=10)
@@ -310,36 +309,35 @@ def generate_certificate(name, date, course, selected_company, course_provider="
         pdf.multi_cell(w=text_box_width, h=14, txt=metadata_text, align="R")
 
         # Certificate title
-        pdf.set_font("Gunaydin", style="", size=12)
+        pdf.set_font("Gunaydin", size=12)
         pdf.set_xy(50, 160)
-        pdf.set_text_color(128, 128, 128)
-        pdf.cell(w=page_width-100, h=30, txt="CERTIFICATE OF COMPLETION", align="L")
+        pdf.set_text_color(128, 128, 128)  # Gray color
+        pdf.cell(w=page_width - 100, h=30, txt="CERTIFICATE OF COMPLETION", align="L")
 
         # Course Name
-        pdf.set_text_color(0, 0, 0)
-        pdf.set_font("TimesNewRomanBold", style="", size=40)
+        pdf.set_text_color(0, 0, 0)  # Black color
+        pdf.set_font("TimesNewRomanBold", size=40)
         pdf.set_xy(50, 190)
-        pdf.cell(w=page_width-100, h=40, txt=course, align="L")
+        pdf.cell(w=page_width - 100, h=40, txt=course, align="L")
 
         # Instructor Info
         pdf.set_font("Gunaydin", size=16)
         pdf.set_xy(50, 240)
-        pdf.cell(w=page_width-100, h=20, txt=f"Instructor: {instructor_name}", align="L")
+        pdf.cell(w=page_width - 100, h=20, txt=f"Instructor: {instructor_name}", align="L")
 
         # Student details
-        pdf.set_font("Touche", style="", size=40)
+        pdf.set_font("Touche", size=40)
         pdf.set_xy(50, 350)
-        pdf.cell(w=page_width-100, h=40, txt=name, align="L")
+        pdf.cell(w=page_width - 100, h=40, txt=name, align="L")
 
         # Date and Length
-        pdf.set_font("TimesNewRomanBold", style="", size=17)
+        pdf.set_font("TimesNewRomanBold", size=17)
         pdf.set_xy(50, 390)
-        pdf.cell(w=page_width-100, h=20, txt=f"Date {date}", ln=1)
-
-        pdf.set_font("TimesNewRomanBold", style="", size=17)
+        pdf.cell(w=page_width - 100, h=20, txt=f"Date: {date}", ln=1)
         pdf.set_xy(50, 410)
-        pdf.cell(w=page_width-100, h=20, txt="Length 10 total hours", ln=1)
+        pdf.cell(w=page_width - 100, h=20, txt="Length: 10 total hours", ln=1)
 
+        # Save the certificate
         output_filename = f"Udemy-certificate_{name.replace(' ', '_')}.pdf"
         pdf.output(output_filename)
         print(f"Certificate saved as '{output_filename}'.")
