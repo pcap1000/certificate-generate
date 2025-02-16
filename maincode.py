@@ -275,7 +275,7 @@ def generate_certificate(name, date, course, selected_company, course_provider="
         # Add custom fonts
         pdfmetrics.registerFont(TTFont('Gunaydin', r'fonts/Gunaydin-Regular.ttf'))
         pdfmetrics.registerFont(TTFont('TimesNewRomanBold', r'fonts/times-new-roman-bold.otf'))
-        pdfmetrics.registerFont(TTFont('Touche', r'fonts/TT_Hoves_Pro_Bold.ttf'))
+        pdfmetrics.registerFont(TTFont('Touche', r'fonts/Touche-Semibold-BF642a2ebf682d9.otf'))
         #pdf.add_font("Gunaydin", style="", fname=r"fonts/rival-regular-1.otf", uni=True)
         #.add_font("TimesNewRomanBold", style="", fname=r"fonts/rival-regular-1.otf", uni=True)
         #pdf.add_font("Touche", style="", fname=r"fonts/rival-regular-1.otf", uni=True)
