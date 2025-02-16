@@ -272,10 +272,15 @@ def generate_certificate(name, date, course, selected_company, course_provider="
         pdf = FPDF(orientation='L', unit='pt', format='A4')
         pdf.add_page()
 
-        # Add custom fonts
-        pdf.add_font("Gunaydin", style="", fname=r"fonts/Gunaydin-Regular.ttf", uni=True)
-        pdf.add_font("TimesNewRomanBold", style="", fname=r"fonts/times-new-roman-bold.otf", uni=True)
-        pdf.add_font("Touche", style="", fname=r"fonts/Touche-Semibold-BF642a2ebf682d9.otf", uni=True)
+
+        pdfmetrics.registerFont(TTFont('Gunaydin', r'fonts/Gunaydin-Regular.ttf'))
+        pdfmetrics.registerFont(TTFont('TimesNewRomanBold', r'fonts/times-new-roman-bold.otf'))
+        pdfmetrics.registerFont(TTFont('Touche', r'fonts/Touche-Semibold-BF642a2ebf682d9.ttf'))
+
+        # # Add custom fonts
+        # pdf.add_font("Gunaydin", style="", fname=r"fonts/Gunaydin-Regular.ttf", uni=True)
+        # pdf.add_font("TimesNewRomanBold", style="", fname=r"fonts/times-new-roman-bold.otf", uni=True)
+        # pdf.add_font("Touche", style="", fname=r"fonts/Touche-Semibold-BF642a2ebf682d9.ttf", uni=True)
 
         page_width = pdf.w
         page_height = pdf.h
