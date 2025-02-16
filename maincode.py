@@ -273,16 +273,9 @@ def generate_certificate(name, date, course, selected_company, course_provider="
         pdf.add_page()
 
         # Add custom fonts
-        # pdfmetrics.registerFont(TTFont('Gunaydin', r'fonts/Gunaydin-Regular.ttf'))
-        # pdfmetrics.registerFont(TTFont('TimesNewRomanBold', r'fonts/times-new-roman-bold.otf'))
-        # pdfmetrics.registerFont(TTFont('Touche', r'fonts/Touche-Semibold-BF642a2ebf682d9.ttf'))
-        #pdf.add_font("Gunaydin", style="", fname=r"fonts/rival-regular-1.otf", uni=True)
-        #pdf.add_font("TimesNewRomanBold", style="", fname=r"fonts/rival-regular-1.otf", uni=True)
-        #pdf.add_font("Touche", style="", fname=r"fonts/rival-regular-1.otf", uni=True)
         pdf.add_font("Gunaydin", style="", fname=r"fonts/Gunaydin-Regular.ttf", uni=True)
-        pdf.add_font("TimesNewRomanBold", style="", fname=r"fonts/times-new-roman-bold.otf", uni=True)  # Ensure it's .ttf
+        pdf.add_font("TimesNewRomanBold", style="", fname=r"fonts/times-new-roman-bold.otf", uni=True)
         pdf.add_font("Touche", style="", fname=r"fonts/Touche-Semibold-BF642a2ebf682d9.ttf", uni=True)
-
 
         page_width = pdf.w
         page_height = pdf.h
@@ -307,7 +300,7 @@ def generate_certificate(name, date, course, selected_company, course_provider="
         pdf.set_font("Gunaydin", style="", size=12)
         pdf.set_xy(50, 160)
         pdf.set_text_color(128, 128, 128)
-        pdf.cell(w=0, h=30, txt="CERTIFICATE OF COMPLETION", align="L")
+        pdf.cell(w=page_width-100, h=30, txt="CERTIFICATE OF COMPLETION", align="L")
 
         # Course Name
         pdf.set_text_color(0, 0, 0)
@@ -325,13 +318,14 @@ def generate_certificate(name, date, course, selected_company, course_provider="
         pdf.set_xy(50, 350)
         pdf.cell(w=page_width-100, h=40, txt=name, align="L")
 
+        # Date and Length
         pdf.set_font("TimesNewRomanBold", style="", size=17)
         pdf.set_xy(50, 390)
-        pdf.cell(txt=f"Date {date}", ln=1)
+        pdf.cell(w=page_width-100, h=20, txt=f"Date {date}", ln=1)
 
         pdf.set_font("TimesNewRomanBold", style="", size=17)
         pdf.set_xy(50, 410)
-        pdf.cell(txt="Length 10 total hours", ln=1)
+        pdf.cell(w=page_width-100, h=20, txt="Length 10 total hours", ln=1)
 
         output_filename = f"Udemy-certificate_{name.replace(' ', '_')}.pdf"
         pdf.output(output_filename)
